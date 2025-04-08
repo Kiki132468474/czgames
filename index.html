@@ -7,20 +7,25 @@
     body {
       font-family: Arial, sans-serif;
       padding: 2em;
-      background: #f4f4f4;
+      background: #f2f2f2;
     }
+
     h1 {
       text-align: center;
+      margin-bottom: 30px;
     }
+
     ul {
       list-style: none;
       padding: 0;
       max-width: 600px;
       margin: 0 auto;
     }
+
     li {
       margin: 10px 0;
     }
+
     a {
       display: block;
       padding: 15px;
@@ -29,26 +34,26 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-decoration: none;
       color: #333;
-      transition: 0.2s;
+      font-weight: bold;
+      transition: background 0.2s;
     }
+
     a:hover {
-      background: #e0f0ff;
+      background: #dff0ff;
     }
   </style>
 </head>
 <body>
 
   <h1>Moje Projekty</h1>
-  <ul id="projectList">
-    <!-- Projekty budou načteny skriptem -->
-  </ul>
+  <ul id="projectList"></ul>
 
   <script>
-    // Seznam projektových složek (ručně přidáš názvy)
+    // Seznam projektů: název zobrazený v menu + cesta k HTML souboru
     const projects = [
-      "projekt1",
-      "projekt2",
-      "projekt3"
+      { name: "Testovací Projekt", path: "projekt1/indextest.html" },
+      { name: "Moje Hra", path: "projekt2/mojehra.html" },
+      { name: "Demo Web", path: "projekt3/index.html" }
     ];
 
     const list = document.getElementById("projectList");
@@ -56,8 +61,8 @@
     projects.forEach(project => {
       const li = document.createElement("li");
       const link = document.createElement("a");
-      link.href = `${project}/index.html`;
-      link.textContent = project;
+      link.href = project.path;
+      link.textContent = project.name;
       li.appendChild(link);
       list.appendChild(li);
     });
@@ -65,3 +70,4 @@
 
 </body>
 </html>
+
